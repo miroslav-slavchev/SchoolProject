@@ -12,13 +12,14 @@ namespace SchoolProject.SchoolComponents
         {
             Name = name;
             Address = address;
+            Students = new List<Student>();
         }
 
         public string Name { get; set; }
 
         public string Address { get; set; }
 
-        private List<Student> Students { get; set; } = new List<Student>();
+        public List<Student> Students { get; set; } 
 
         public List<Student> GetExcelentStudents() => Students.Where(student => student.IsExcelent).ToList();
 
