@@ -12,9 +12,9 @@ namespace SchoolProject
         {
             School school = new School("Sofia School", "Sofia, 1000, Center");
             JArray studentsArray = JsonDataFileReader.GetJArray(StudentsJsonFile);
-            for (int i = 0; i < studentsArray.Count; i++)
+            foreach (JObject studentJson in studentsArray)
             {
-                Student student = studentsArray[i].ToObject<Student>();
+                Student student = studentJson.ToObject<Student>();
                 school.AddStudent(student);
             }
 
