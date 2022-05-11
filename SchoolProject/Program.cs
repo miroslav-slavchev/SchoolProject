@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using SchoolProject.Utils;
 using SchoolProject.SchoolComponents;
+using System.Collections.Generic;
 
 namespace SchoolProject
 {
@@ -11,18 +12,12 @@ namespace SchoolProject
         static void Main(string[] args)
         {
             School school = new School("Sofia School", "Sofia, 1000, Center");
-            JArray studentsArray = JsonDataFileReader.GetJArray(StudentsJsonFile);
-            foreach (JObject studentJson in studentsArray)
-            {
-                Student student = studentJson.ToObject<Student>();
-                school.AddStudent(student);
-            }
 
-            var excelentStudents = school.GetExcelentStudents();
-            foreach (Student student in excelentStudents)
-            {
-                student.Speak();
-            }
+            JArray studentsArray = JsonDataFileReader.GetJArray(StudentsJsonFile);
+            List<Student> students = studentsArray.ToObject<List<Student>>();
+            school.AddStudents(students);
+
+            school.GetExcelentStudents().ForEach(student => student.Speak());
         }
     }
 }
