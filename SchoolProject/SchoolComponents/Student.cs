@@ -9,15 +9,14 @@ namespace SchoolProject.SchoolComponents
     /// </summary>
     public class Student
     {
-        public Student(int id, string name, int age, Dictionary<string,int> marks)
+        public Student(string name, int age, Dictionary<string, int> marks)
         {
-            Id = id;
             Name = name;
             InitializeAge(age);
             Marks = marks;
         }
 
-        public int Id { get; private set; }
+        public int Id { get; private set; } = new Random().Next();
 
         public string Name { get; set; }
 
