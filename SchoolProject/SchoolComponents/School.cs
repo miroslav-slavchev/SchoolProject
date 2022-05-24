@@ -19,7 +19,7 @@ namespace SchoolProject.SchoolComponents
 
         public string Address { get; set; }
 
-        public List<Student> Students { get; set; } 
+        public List<Student> Students { get; private set; } 
 
         public List<Student> GetExcelentStudents() => Students.Where(student => student.IsExcelent).ToList();
 

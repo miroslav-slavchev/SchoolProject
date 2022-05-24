@@ -7,7 +7,7 @@ namespace SchoolProject.Utils
     /// <summary>
     /// Static class that manages the json files in the Directory.
     /// </summary>
-    internal static class JsonDataFileReader
+    public static class JsonDataFileReader
     {
         /// <summary>
         /// Directory name.
