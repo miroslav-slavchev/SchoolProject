@@ -20,6 +20,15 @@ namespace SchoolTestProject
         }
 
         [Test]
+        [Description("Check that the student lists match.")]
+        public void CheckStudentLists()
+        {
+            List<Student> students1 = JsonDataFileReader.GetJArray(StudentsJsonFile).ToObject<List<Student>>();
+            List<Student> students2 = JsonDataFileReader.GetJArray(Students2JsonFile).ToObject<List<Student>>();
+            CollectionAssert.AreEqual(students1, students2);
+        }
+
+        [Test]
         [Description("Validate the all students count.")]
         public void StudentsCountCompareToJArray()
         {
@@ -40,7 +49,7 @@ namespace SchoolTestProject
 
             Assert.AreEqual(name, student.Name);
             Assert.AreEqual(age, student.Age);
-            foreach(var pair in marks)
+            foreach (var pair in marks)
             {
                 Assert.AreEqual(student.Marks[pair.Key], pair.Value);
             }

@@ -12,6 +12,7 @@ namespace SchoolTestProject
     public class BaseTest
     {
         protected const string StudentsJsonFile = "Students.json";
+        protected const string Students2JsonFile = "Students2.json";
 
         protected School School { get; set; }
 
