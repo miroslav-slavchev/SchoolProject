@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace SchoolTestProject
 {
-    internal class StudentsTest : BaseTest
+    [TestFixture]
+    public class StudentsTest : BaseTest
     {
         [Test]
         [Description("Validate the all students count.")]
@@ -73,6 +74,15 @@ namespace SchoolTestProject
                     Assert.That(value, Is.GreaterThanOrEqualTo(2).And.LessThanOrEqualTo(6));
                 }
             }
+        }
+
+        [Test]
+        [TestCase(5, 10, 15)]
+        [TestCase(8, 2, 10)]
+        public void Tests(int a, int b, int expectedSum)
+        {
+            int sum = a + b;
+            Assert.AreEqual(expectedSum, sum);
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace SchoolTestProject
 {
+    [TestFixture]
     public class StudentAgeTests
     {
         private const string StudentJohnJsonFile = "StudentJohn.json";
