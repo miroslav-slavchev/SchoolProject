@@ -16,7 +16,7 @@ namespace SchoolTestProject
 
         protected School School { get; set; }
 
-        [SetUp]
+        [OneTimeSetUp]
         protected void InitializeSchool()
         {
             School school = new School("Sofia English High School", "Sofia, 1000, str. 1");

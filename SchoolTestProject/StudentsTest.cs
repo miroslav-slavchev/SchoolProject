@@ -27,9 +27,18 @@ namespace SchoolTestProject
         [Description("Check that the student lists match.")]
         public void CheckStudentLists()
         {
-            List<Student> students1 = JsonDataFileReader.GetJArray(StudentsJsonFile).ToObject<List<Student>>();
-            List<Student> students2 = JsonDataFileReader.GetJArray(Students2JsonFile).ToObject<List<Student>>();
+            List<string> students1 = JsonDataFileReader.GetJArray(StudentsJsonFile).ToObject<List<Student>>().Select(student => student.Name).ToList();
+            List<string> students2 = JsonDataFileReader.GetJArray(StudentsJsonFile).ToObject<List<Student>>().Select(student => student.Name).ToList();
             CollectionAssert.AreEqual(students1, students2);
+        }
+
+        [Test]
+        [Description("Check that the list contains an item.")]
+        public void CheckStudentLists2()
+        {
+            List<string> students = JsonDataFileReader.GetJArray(StudentsJsonFile).ToObject<List<Student>>().Select(student => student.Name).ToList();
+            CollectionAssert.Contains(students, "John");
+            CollectionAssert.DoesNotContain(students, "Kate");
         }
 
         [Test]
@@ -77,15 +86,6 @@ namespace SchoolTestProject
                     Assert.That(value, Is.GreaterThanOrEqualTo(2).And.LessThanOrEqualTo(6));
                 }
             }
-        }
-
-        [Test]
-        [TestCase(5, 10, 15)]
-        [TestCase(8, 2, 10)]
-        public void Tests(int a, int b, int expectedSum)
-        {
-            int sum = a + b;
-            Assert.AreEqual(expectedSum, sum);
         }
     }
 }
