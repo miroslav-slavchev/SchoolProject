@@ -17,6 +17,9 @@ namespace SchoolTestProject
         [Description("Validate the all students count.")]
         public void StudentsCount()
         {
+            // Assert.IsTrue(School.Students.Count == 4);
+            // Assert.That(School.Students.Count == 4, Is.True);
+            // Assert.AreEqual(4, School.Students.Count);
             Assert.That(School.Students, Has.Count.EqualTo(4));
         }
 
